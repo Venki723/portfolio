@@ -115,23 +115,26 @@ form.addEventListener('submit', async e => {
   errorMsg.textContent = '';
 
   try {
-    const response = await fetch('https://formspree.io/f/xvgrokgb', {
+    const response = await fetch('https://api.web3forms.com/submit', {
       method: 'POST',
       headers: { 'Accept': 'application/json', 'Content-Type': 'application/json' },
       body: JSON.stringify({
+        access_key: 'dfc94a36-e133-4a58-ae1a-375ff88c5e60',
         name: nameIn.value.trim(),
         email: emailIn.value.trim(),
-        message: msgIn.value.trim()
+        message: msgIn.value.trim(),
+        subject: `Portfolio Contact from ${nameIn.value.trim()}`
       })
     });
 
-    if (response.ok) {
+    const data = await response.json();
+
+    if (data.success) {
       successMsg.textContent = '✅ Message sent! I\'ll get back to you soon.';
       form.reset();
       setTimeout(() => { successMsg.textContent = ''; }, 5000);
     } else {
-      const data = await response.json();
-      errorMsg.textContent = data?.errors?.map(e => e.message).join(', ') || '❌ Something went wrong. Please try again.';
+      errorMsg.textContent = data.message || '❌ Something went wrong. Please try again.';
     }
   } catch {
     errorMsg.textContent = '❌ Network error. Please check your connection and try again.';
