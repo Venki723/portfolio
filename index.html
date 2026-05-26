@@ -175,16 +175,6 @@
           </ul>
         </div>
 
-        <div class="project-card glass-card">
-          <h3>Sunrise Hospital</h3>
-          <p class="project-sub">Hospital Management System</p>
-          <div class="project-tech"><span>ReactJS</span><span>PHP</span></div>
-          <ul>
-            <li>Developed core Doctor Dashboard modules integrated tightly with PHP backend APIs.</li>
-            <li>Built workflows spanning Finance, Pharmacy, Billing, Reception, and OT Booking modules.</li>
-            <li>Programmed robust systems for patient records, surgery scheduling, and medical test referrals.</li>
-          </ul>
-        </div>
 
         <div class="project-card glass-card">
           <h3>Elite Cafe</h3>
@@ -241,21 +231,22 @@
         <form id="contact-form" class="contact-form glass-card" novalidate>
           <div class="form-group">
             <label for="cf-name">Name</label>
-            <input type="text" id="cf-name" placeholder="Your name" required>
+            <input type="text" id="cf-name" name="name" placeholder="Your name" required>
             <span class="form-error" id="err-name"></span>
           </div>
           <div class="form-group">
             <label for="cf-email">Email</label>
-            <input type="email" id="cf-email" placeholder="you@example.com" required>
+            <input type="email" id="cf-email" name="email" placeholder="you@example.com" required>
             <span class="form-error" id="err-email"></span>
           </div>
           <div class="form-group">
             <label for="cf-message">Message</label>
-            <textarea id="cf-message" rows="4" placeholder="Your message..." required></textarea>
+            <textarea id="cf-message" name="message" rows="4" placeholder="Your message..." required></textarea>
             <span class="form-error" id="err-message"></span>
           </div>
-          <button type="submit" class="btn btn-primary btn-full">Send Message</button>
+          <button type="submit" id="cf-submit" class="btn btn-primary btn-full">Send Message</button>
           <p id="form-success" class="form-success"></p>
+          <p id="form-error-msg" class="form-error-msg"></p>
         </form>
       </div>
     </div>

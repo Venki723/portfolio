@@ -420,3 +420,27 @@ img { max-width: 100%; display: block; }
   .timeline { padding-left: 28px; }
   .project-card { padding: 24px; }
 }
+
+/* ═══════════════════════════════════════════
+   FORM FEEDBACK
+   ═══════════════════════════════════════════ */
+.form-success {
+  color: #00d4aa;
+  font-size: 0.92rem;
+  font-weight: 600;
+  margin-top: 10px;
+  text-align: center;
+  min-height: 1.4em;
+}
+.form-error-msg {
+  color: #ff6b9d;
+  font-size: 0.92rem;
+  font-weight: 600;
+  margin-top: 10px;
+  text-align: center;
+  min-height: 1.4em;
+}
+#cf-submit:disabled {
+  opacity: 0.65;
+  cursor: not-allowed;
+}

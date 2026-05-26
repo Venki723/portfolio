@@ -66,45 +66,78 @@ window.addEventListener('scroll', () => {
   });
 });
 
-/* ── Contact form validation ── */
-const form = document.getElementById('contact-form');
-const nameIn = document.getElementById('cf-name');
-const emailIn = document.getElementById('cf-email');
-const msgIn = document.getElementById('cf-message');
+/* ── Contact form — Formspree integration ── */
+const form     = document.getElementById('contact-form');
+const nameIn   = document.getElementById('cf-name');
+const emailIn  = document.getElementById('cf-email');
+const msgIn    = document.getElementById('cf-message');
+const submitBtn = document.getElementById('cf-submit');
+const successMsg = document.getElementById('form-success');
+const errorMsg   = document.getElementById('form-error-msg');
 
 // Reject numbers and special chars in name field
 nameIn.addEventListener('input', () => {
   nameIn.value = nameIn.value.replace(/[^a-zA-Z\s]/g, '');
 });
 
-form.addEventListener('submit', e => {
+form.addEventListener('submit', async e => {
   e.preventDefault();
   let valid = true;
-  // Name
+
+  // Validate Name
   if (!nameIn.value.trim() || /[^a-zA-Z\s]/.test(nameIn.value)) {
     document.getElementById('err-name').textContent = 'Please enter a valid name (letters only).';
     valid = false;
   } else {
     document.getElementById('err-name').textContent = '';
   }
-  // Email
+  // Validate Email
   if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailIn.value)) {
     document.getElementById('err-email').textContent = 'Please enter a valid email.';
     valid = false;
   } else {
     document.getElementById('err-email').textContent = '';
   }
-  // Message
+  // Validate Message
   if (!msgIn.value.trim()) {
     document.getElementById('err-message').textContent = 'Please enter a message.';
     valid = false;
   } else {
     document.getElementById('err-message').textContent = '';
   }
-  if (valid) {
-    document.getElementById('form-success').textContent = '✅ Message sent successfully!';
-    form.reset();
-    setTimeout(() => { document.getElementById('form-success').textContent = ''; }, 4000);
+
+  if (!valid) return;
+
+  // Show loading state
+  submitBtn.textContent = 'Sending…';
+  submitBtn.disabled = true;
+  successMsg.textContent = '';
+  errorMsg.textContent = '';
+
+  try {
+    const response = await fetch('https://formspree.io/f/xvgrokgb', {
+      method: 'POST',
+      headers: { 'Accept': 'application/json', 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        name: nameIn.value.trim(),
+        email: emailIn.value.trim(),
+        message: msgIn.value.trim()
+      })
+    });
+
+    if (response.ok) {
+      successMsg.textContent = '✅ Message sent! I\'ll get back to you soon.';
+      form.reset();
+      setTimeout(() => { successMsg.textContent = ''; }, 5000);
+    } else {
+      const data = await response.json();
+      errorMsg.textContent = data?.errors?.map(e => e.message).join(', ') || '❌ Something went wrong. Please try again.';
+    }
+  } catch {
+    errorMsg.textContent = '❌ Network error. Please check your connection and try again.';
+  } finally {
+    submitBtn.textContent = 'Send Message';
+    submitBtn.disabled = false;
   }
 });
 
