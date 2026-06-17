@@ -67,13 +67,13 @@ window.addEventListener('scroll', () => {
 });
 
 /* ── Contact form — Formspree integration ── */
-const form     = document.getElementById('contact-form');
-const nameIn   = document.getElementById('cf-name');
-const emailIn  = document.getElementById('cf-email');
-const msgIn    = document.getElementById('cf-message');
+const form = document.getElementById('contact-form');
+const nameIn = document.getElementById('cf-name');
+const emailIn = document.getElementById('cf-email');
+const msgIn = document.getElementById('cf-message');
 const submitBtn = document.getElementById('cf-submit');
 const successMsg = document.getElementById('form-success');
-const errorMsg   = document.getElementById('form-error-msg');
+const errorMsg = document.getElementById('form-error-msg');
 
 // Reject numbers and special chars in name field
 nameIn.addEventListener('input', () => {
