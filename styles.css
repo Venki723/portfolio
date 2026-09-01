@@ -25,9 +25,6 @@
   --transition: 0.35s cubic-bezier(.4, 0, .2, 1);
 }
 
-/* ═══════════════════════════════════════════
-   RESET & GLOBALS
-   ═══════════════════════════════════════════ */
 *,
 *::before,
 *::after {
@@ -70,9 +67,6 @@ img {
   padding: 0 24px;
 }
 
-/* ═══════════════════════════════════════════
-   GLASS CARDS
-   ═══════════════════════════════════════════ */
 .glass-card {
   background: var(--glass);
   border: 1px solid var(--border);
@@ -88,9 +82,6 @@ img {
   box-shadow: 0 12px 48px rgba(108, 99, 255, 0.12);
 }
 
-/* ═══════════════════════════════════════════
-   NAVBAR
-   ═══════════════════════════════════════════ */
 #navbar {
   position: fixed;
   top: 0;
@@ -183,7 +174,6 @@ img {
   opacity: 0.9;
 }
 
-/* mobile toggle */
 .menu-toggle {
   display: none;
   background: none;
@@ -215,9 +205,6 @@ img {
   transform: translateY(-7px) rotate(-45deg);
 }
 
-/* ═══════════════════════════════════════════
-   HERO
-   ═══════════════════════════════════════════ */
 #hero {
   min-height: 100vh;
   display: flex;
@@ -343,9 +330,66 @@ img {
   gap: 16px;
   justify-content: center;
   flex-wrap: wrap;
+  margin-bottom: 24px;
 }
 
-/* Scroll indicator */
+.hero-socials {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  align-items: center;
+}
+
+.social-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background: var(--glass);
+  border: 1px solid var(--border);
+  color: var(--text-dim);
+  transition: all var(--transition);
+}
+
+.social-link:hover {
+  color: var(--accent);
+  border-color: var(--accent);
+  background: rgba(108, 99, 255, 0.12);
+  transform: translateY(-3deg);
+  box-shadow: 0 6px 20px rgba(108, 99, 255, 0.25);
+}
+
+.contact-socials {
+  display: flex;
+  gap: 12px;
+  margin-top: 24px;
+  flex-wrap: wrap;
+}
+
+.social-link-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--border);
+  color: var(--text);
+  font-size: 0.88rem;
+  font-weight: 500;
+  text-decoration: none;
+  transition: all var(--transition);
+}
+
+.social-link-badge:hover {
+  background: rgba(108, 99, 255, 0.15);
+  border-color: var(--accent);
+  color: #fff;
+  transform: translateY(-2px);
+}
+
 .scroll-indicator {
   position: absolute;
   bottom: 32px;
@@ -384,9 +428,6 @@ img {
   }
 }
 
-/* ═══════════════════════════════════════════
-   BUTTONS
-   ═══════════════════════════════════════════ */
 .btn {
   display: inline-flex;
   align-items: center;
@@ -430,9 +471,6 @@ img {
   justify-content: center;
 }
 
-/* ═══════════════════════════════════════════
-   SECTIONS
-   ═══════════════════════════════════════════ */
 .section {
   padding: 100px 0;
 }
@@ -461,9 +499,6 @@ img {
   margin: 12px auto 0;
 }
 
-/* ═══════════════════════════════════════════
-   ABOUT
-   ═══════════════════════════════════════════ */
 .about-card {
   max-width: 800px;
   margin: 0 auto;
@@ -503,9 +538,6 @@ img {
   font-weight: 500;
 }
 
-/* ═══════════════════════════════════════════
-   SKILLS
-   ═══════════════════════════════════════════ */
 .skills-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -560,9 +592,6 @@ img {
   color: #fff;
 }
 
-/* ═══════════════════════════════════════════
-   EXPERIENCE TIMELINE
-   ═══════════════════════════════════════════ */
 .timeline {
   max-width: 760px;
   margin: 0 auto;
@@ -641,9 +670,6 @@ img {
   font-weight: 700;
 }
 
-/* ═══════════════════════════════════════════
-   PROJECTS
-   ═══════════════════════════════════════════ */
 .projects-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -712,9 +738,6 @@ img {
   font-weight: 700;
 }
 
-/* ═══════════════════════════════════════════
-   EDUCATION
-   ═══════════════════════════════════════════ */
 .edu-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -761,9 +784,6 @@ img {
   font-size: 0.95rem !important;
 }
 
-/* ═══════════════════════════════════════════
-   CONTACT
-   ═══════════════════════════════════════════ */
 .contact-wrapper {
   display: grid;
   grid-template-columns: 1fr 1.4fr;
@@ -857,9 +877,6 @@ img {
   font-weight: 500;
 }
 
-/* ═══════════════════════════════════════════
-   FOOTER
-   ═══════════════════════════════════════════ */
 #footer {
   text-align: center;
   padding: 40px 24px;
@@ -868,9 +885,6 @@ img {
   color: var(--text-dim);
 }
 
-/* ═══════════════════════════════════════════
-   SCROLL REVEAL ANIMATIONS
-   ═══════════════════════════════════════════ */
 .reveal {
   opacity: 0;
   transform: translateY(28px);
@@ -882,25 +896,36 @@ img {
   transform: translateY(0);
 }
 
-/* staggered delays for grids */
 .skills-grid .skill-card:nth-child(2) {
-  transition-delay: 0.08s;
+  transition-delay: 0.06s;
 }
 
 .skills-grid .skill-card:nth-child(3) {
-  transition-delay: 0.16s;
+  transition-delay: 0.12s;
 }
 
 .skills-grid .skill-card:nth-child(4) {
-  transition-delay: 0.24s;
+  transition-delay: 0.18s;
 }
 
 .skills-grid .skill-card:nth-child(5) {
-  transition-delay: 0.32s;
+  transition-delay: 0.24s;
 }
 
 .skills-grid .skill-card:nth-child(6) {
-  transition-delay: 0.40s;
+  transition-delay: 0.30s;
+}
+
+.skills-grid .skill-card:nth-child(7) {
+  transition-delay: 0.36s;
+}
+
+.skills-grid .skill-card:nth-child(8) {
+  transition-delay: 0.42s;
+}
+
+.skills-grid .skill-card:nth-child(9) {
+  transition-delay: 0.48s;
 }
 
 .projects-grid .project-card:nth-child(2) {
@@ -915,10 +940,6 @@ img {
   transition-delay: 0.3s;
 }
 
-.projects-grid .project-card:nth-child(5) {
-  transition-delay: 0.4s;
-}
-
 .edu-grid .edu-card:nth-child(2) {
   transition-delay: 0.1s;
 }
@@ -927,9 +948,6 @@ img {
   transition-delay: 0.2s;
 }
 
-/* ═══════════════════════════════════════════
-   RESPONSIVE
-   ═══════════════════════════════════════════ */
 @media (max-width: 900px) {
   .skills-grid {
     grid-template-columns: repeat(2, 1fr);
@@ -997,9 +1015,6 @@ img {
   }
 }
 
-/* ═══════════════════════════════════════════
-   FORM FEEDBACK
-   ═══════════════════════════════════════════ */
 .form-success {
   color: #00d4aa;
   font-size: 0.92rem;
